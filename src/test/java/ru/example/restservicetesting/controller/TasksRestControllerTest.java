@@ -40,8 +40,8 @@ class TasksRestControllerTest {
     @DisplayName("GET /api/task возвращает HTTP-ответ со статусом 200 OK и списком задач")
     void getAllTasks_returnValidResponseEntity() {
         // given
-        List<Task> tasks = List.of(new Task(UUID.randomUUID(), "Первая задача", false),
-                new Task(UUID.randomUUID(), "Вторая задача", true));
+        List<Task> tasks = List.of(new Task(UUID.randomUUID(), "First task", false),
+                new Task(UUID.randomUUID(), "Second task", true));
         Mockito.doReturn(tasks).when(this.tasksRepository).findAll();
 
         // when
@@ -58,7 +58,7 @@ class TasksRestControllerTest {
     @Test
     void createNewTask_payloadIsValid_returnValidResponseEntity() {
         // given
-        var details = "Третья задача";
+        var details = "Third task";
 
         // when
         var responseEntity = this.controller.createNewTask(new NewTaskPayload(details),

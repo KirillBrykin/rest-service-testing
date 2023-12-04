@@ -1,0 +1,7 @@
+spring:
+  datasource:
+    url: jdbc:tc:postgresql://localhost:5432/rest-service-testing
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
