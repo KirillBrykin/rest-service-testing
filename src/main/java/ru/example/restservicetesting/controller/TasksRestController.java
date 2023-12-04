@@ -28,7 +28,7 @@ public class TasksRestController {
 
     @GetMapping
     public ResponseEntity<List<Task>> getAllTasks() {
-        System.out.println("TasksRestController.getAllTasks");
+        log.info("TasksRestController.getAllTasks");
         return ResponseEntity.ok()
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(this.taskRepository.findAll());
@@ -39,7 +39,7 @@ public class TasksRestController {
             @RequestBody NewTaskPayload payload,
             UriComponentsBuilder uriComponentsBuilder,
             Locale locale) {
-        System.out.println("TasksRestController.createNewTask");
+        log.info("TasksRestController.createNewTask");
         if (payload.getDetails() == null || payload.getDetails().isBlank()) {
             final String message = this.messageSource
                     .getMessage("tasks.create.details.errors.not_set",
@@ -60,7 +60,7 @@ public class TasksRestController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Task> findTaskById(@PathVariable("id") UUID id) {
-        System.out.println("TasksRestController.findTaskById");
+        log.info("TasksRestController.findTaskById");
         return ResponseEntity.of(this.taskRepository.findById(id));
     }
 }
